@@ -29,6 +29,6 @@ public class Author {
     @Column(name="birth_place")
     private String birthPlace;
 
-    @OneToMany
+    @OneToMany(mappedBy = "author_id")
     private List<Book> bookList;
 }
