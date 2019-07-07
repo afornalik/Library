@@ -20,11 +20,11 @@ public class Borrow {
 
     @OneToMany
     @JoinColumn(name="book_id",referencedColumnName = "id_book")
-    private List<Book> bookId;
+    private Book book;
 
     @OneToMany
     @JoinColumn(name="borrower_id",referencedColumnName = "id_borrower")
-    private List<Borrower> borrowerList;
+    private Borrower borrower;
 
     @Column(name="rental_date",nullable = false)
     private LocalDate rentalDate;

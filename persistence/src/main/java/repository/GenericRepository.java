@@ -1,4 +1,4 @@
-package Repository;
+package repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
