@@ -2,11 +2,11 @@ package repository;
 
 import model.Author;
 
-import javax.persistence.EntityManager;
+import java.util.List;
 
-public class AuthorRepository extends GenericRepository<Author,Long> {
+public interface AuthorRepository {
 
-    protected AuthorRepository(EntityManager entityManager) {
-        super(entityManager);
-    }
+    List getAllAuthors();
+
+    Author getAuthorById(Long id);
 }
