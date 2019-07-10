@@ -18,12 +18,12 @@ public class Borrow {
     @Column(name="id_borrow")
     private Long idBorrow;
 
-    @OneToMany
-    @JoinColumn(name="book_id",referencedColumnName = "id_book")
+    @ManyToOne()
+    @JoinColumn(name = "book_id",nullable = false)
     private Book book;
 
-    @OneToMany
-    @JoinColumn(name="borrower_id",referencedColumnName = "id_borrower")
+    @ManyToOne()
+    @JoinColumn(name = "borrower_id",nullable = false)
     private Borrower borrower;
 
     @Column(name="rental_date",nullable = false)
