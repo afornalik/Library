@@ -1,13 +1,13 @@
 import model.Author;
 import org.junit.Test;
-import repository.AuthorRepository;
+import repository.IAuthorRepository;
 import utils.EntityManagerUtils;
 
 import javax.persistence.EntityManager;
 
-public class AuthorRepositoryTest {
+public class IAuthorRepositoryTest {
 
-    private AuthorRepository authorRepository;
+    private IAuthorRepository IAuthorRepository;
     private EntityManagerUtils entityManagerUtils = EntityManagerUtils.getInstance();
 
     @Test
