@@ -5,7 +5,7 @@ import model.BorrowerDetails;
 
 
 
-public interface IBorrowRespository  {
+public interface IBorrowDetailsRespository {
 
    BorrowerDetails getBorrowerDetailsById(Long id);
 

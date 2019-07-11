@@ -9,10 +9,9 @@ import java.util.List;
 public class AuthorRepository implements IAuthorRepository {
 
     private final EntityManager entityManager;
-    private final EntityManagerUtils entityManagerUtils = EntityManagerUtils.getInstance();
 
     public AuthorRepository() {
-       entityManager = entityManagerUtils.getEntityManager();
+        entityManager = EntityManagerUtils.getInstance().getEntityManager();
     }
 
 
@@ -26,7 +25,9 @@ public class AuthorRepository implements IAuthorRepository {
     }
 
     public void save(Author author) {
+        entityManager.getTransaction().begin();
         entityManager.persist(author);
+        entityManager.getTransaction().commit();
     }
 
     public void edit(Author author) {
@@ -40,6 +41,8 @@ public class AuthorRepository implements IAuthorRepository {
     }
 
     public void delete(Author author) {
+        entityManager.getTransaction().begin();
         entityManager.remove(author);
+        entityManager.getTransaction().commit();
     }
 }

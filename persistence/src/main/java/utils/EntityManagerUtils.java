@@ -7,11 +7,10 @@ import javax.persistence.Persistence;
 public class EntityManagerUtils  {
 
     private static EntityManagerUtils entityManagerUtils = null;
-    private final EntityManagerFactory entityManagerFactory;
     private final EntityManager entityManager;
 
     private EntityManagerUtils() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("mysql-library");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mysql-library");
         entityManager = entityManagerFactory.createEntityManager();
     }
 

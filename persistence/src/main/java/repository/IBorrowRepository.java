@@ -5,7 +5,7 @@ import model.Borrow;
 
 import java.util.List;
 
-public interface IBorrowerDetails {
+public interface IBorrowRepository {
 
     List<Borrow> getAllBorrows();
 
