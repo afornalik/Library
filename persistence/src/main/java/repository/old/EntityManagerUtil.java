@@ -1,4 +1,4 @@
-package repository;
+package repository.old;
 
 public class EntityManagerUtil {
     private static EntityManagerUtil ourInstance = new EntityManagerUtil();

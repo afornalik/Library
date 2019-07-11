@@ -1,9 +1,6 @@
 package service;
 
-import model.Author;
-import repository.AuthorRepository;
-
-import java.util.List;
+import repository.old.AuthorRepository;
 
 public class AuthorService {
 

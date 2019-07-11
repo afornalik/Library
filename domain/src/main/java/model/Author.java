@@ -5,14 +5,17 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="author")
 @Getter
 @Setter
+@ToString
 public class Author {
 
     @Id
@@ -29,6 +32,8 @@ public class Author {
     @Column(name="birth_place")
     private String birthPlace;
 
-    @OneToMany(mappedBy = "author_id")
-    private List<Book> bookList;
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private Set<Book> books;
+
+
 }
