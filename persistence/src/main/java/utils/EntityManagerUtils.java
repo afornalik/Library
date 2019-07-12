@@ -22,7 +22,7 @@ public class EntityManagerUtils  {
     }
 
 
-    public EntityManager getEntityManager() {
+    public  EntityManager getEntityManager() {
         return entityManager;
     }
 }
