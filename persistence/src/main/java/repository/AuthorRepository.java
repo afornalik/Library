@@ -9,9 +9,17 @@ import java.util.List;
 public class AuthorRepository implements IAuthorRepository {
 
     private final EntityManager entityManager;
+    private static AuthorRepository instance = null;
 
-    public AuthorRepository() {
+    private AuthorRepository() {
         entityManager = EntityManagerUtils.getInstance().getEntityManager();
+    }
+
+    public static AuthorRepository getInstance() {
+        if(instance == null) {
+            instance = new AuthorRepository();
+        }
+        return instance;
     }
 
 
