@@ -2,7 +2,9 @@ package service;
 
 import dto.AuthorDto;
 import mapper.AuthorMapper;
+import model.Author;
 import repository.AuthorRepository;
+import repository.IAuthorRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +13,18 @@ import java.util.stream.Collectors;
 
 public class AuthorService implements IAuthorService {
 
-    private final AuthorRepository authorRepository;
+    private final IAuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
 
     private static AuthorService instance;
 
 
-    private AuthorService(AuthorRepository authorRepository) {
+    private AuthorService(IAuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
         authorMapper = AuthorMapper.getInstance(authorRepository);
     }
 
-    public AuthorService getInstance(AuthorRepository authorRepository) {
+    public static AuthorService getInstance(IAuthorRepository authorRepository) {
         if(instance == null) {
             instance = new AuthorService(authorRepository);
         }
@@ -31,12 +33,21 @@ public class AuthorService implements IAuthorService {
 
 
     public List<AuthorDto> getAllAuthors() {
-        List<AuthorDto> authorList =
-                authorRepository
-                        .getAllAuthors()
-                        .stream()
-                        .map(authorMapper::mapEntityToDto)
-                        .collect(Collectors.toList());
-        return authorList;
+        return authorRepository
+                .getAllAuthors()
+                .stream()
+                .map(authorMapper::mapEntityToDto)
+                .collect(Collectors.toList());
+    }
+
+    public void saveAuthor(AuthorDto authorDto) {
+
+        Author authorEntity = authorMapper.mapDtoToEntity(authorDto);
+
+        try {
+            authorRepository.save(authorEntity);
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -8,4 +8,6 @@ import java.util.List;
 public interface IAuthorService {
 
     List<AuthorDto> getAllAuthors();
+
+    void saveAuthor(AuthorDto authorDto);
 }
