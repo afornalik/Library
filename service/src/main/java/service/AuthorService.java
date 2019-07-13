@@ -41,8 +41,11 @@ public class AuthorService implements IAuthorService {
     }
 
     public void saveAuthor(AuthorDto authorDto) {
+        Author authorEntity;
+        if(authorDto.getId()== null) {
 
-        Author authorEntity = authorMapper.mapDtoToEntity(authorDto);
+        }
+        authorEntity = authorMapper.mapDtoToEntity(authorDto);
 
         try {
             authorRepository.save(authorEntity);
