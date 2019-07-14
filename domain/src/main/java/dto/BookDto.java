@@ -11,7 +11,7 @@ public class BookDto {
 
     private String id;
     private String category;
-    private String isBorrowed;
+    private String borrower;
     private String isbn;
     private String pages;
     private String author;
