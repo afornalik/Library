@@ -14,7 +14,7 @@ public class IAuthorRepositoryTest {
 
     @Before
     public void init() {
-        iAuthorRepository = new AuthorRepository();
+        iAuthorRepository = AuthorRepository.getInstance();
     }
 
     @Test

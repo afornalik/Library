@@ -3,17 +3,18 @@ package mapper;
 import dto.AuthorDto;
 import model.Author;
 import repository.AuthorRepository;
+import repository.IAuthorRepository;
 
 public class AuthorMapper implements IMapper<Author, AuthorDto> {
 
-    private final AuthorRepository authorRepository;
+    private final IAuthorRepository authorRepository;
     private static AuthorMapper instance;
 
-    public AuthorMapper(AuthorRepository authorRepository) {
+    public AuthorMapper(IAuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
     }
 
-    public static AuthorMapper getInstance(AuthorRepository authorRepository) {
+    public static AuthorMapper getInstance(IAuthorRepository authorRepository) {
         if(instance == null) {
             instance = new AuthorMapper(authorRepository);
         }
