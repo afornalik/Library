@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 
 public class IAuthorRepositoryTest {
 
-    private IAuthorRepository iAuthorRepository;
+ /*   private IAuthorRepository iAuthorRepository;
 
     @Before
     public void init() {
@@ -81,6 +81,6 @@ public class IAuthorRepositoryTest {
         Assert.assertNull(iAuthorRepository.getAuthorById(6L));
     }
 
-
+*/
 
 }

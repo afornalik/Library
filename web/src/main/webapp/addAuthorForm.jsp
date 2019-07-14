@@ -11,7 +11,7 @@
     <title>Library | Author</title>
 </head>
 <body>
-    <form method="post" action="AddAuthor">
+    <form method="post" action="addAuthor">
         <h2>Author</h2>
         <label> name <br>
             <input type="text" name="firstName">
