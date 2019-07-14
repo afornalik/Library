@@ -9,15 +9,25 @@ import java.util.List;
 public class BookRepository implements IBookRepository {
 
     private final EntityManager entityManager;
+    private static BookRepository instance = null;
 
     public BookRepository() {
         entityManager = EntityManagerUtils.getInstance().getEntityManager();
     }
 
+    public static BookRepository getInstance(){
+        if(instance == null) {
+            instance = new BookRepository();
+        }
+        return instance;
+    }
 
     public List<Book> getAllBooks() {
+        entityManager.getTransaction().begin();
         String query = "SELECT b FROM Book b";
-        return entityManager.createQuery(query,Book.class).getResultList();
+        List<Book> resultList = entityManager.createQuery(query, Book.class).getResultList();
+        entityManager.getTransaction().commit();
+        return resultList;
     }
 
     public Book getBookById(Long id) {
