@@ -1,9 +1,4 @@
-package servlet;
-
-import dto.BookDto;
-import model.Book;
-import repository.BookRepository;
-import service.BookService;
+package servlet.control;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,22 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(urlPatterns = "/index")
-public class BooksServlet extends HttpServlet {
-
-    private BookService bookService = BookService.getInstance();
+@WebServlet( "/AddServlet")
+public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       List<BookDto> bookDtos = bookService.getAllBooks();
+        response.getWriter().println("add");
 
-      request.setAttribute("bookList",bookDtos);
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("addbook.jsp");
         requestDispatcher.forward(request,response);
     }
 }
