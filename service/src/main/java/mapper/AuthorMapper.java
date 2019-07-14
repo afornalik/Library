@@ -7,22 +7,22 @@ import repository.IAuthorRepository;
 
 public class AuthorMapper implements IMapper<Author, AuthorDto> {
 
-    private final IAuthorRepository authorRepository;
+
     private static AuthorMapper instance;
 
-    public AuthorMapper(IAuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+    public AuthorMapper() {
+
     }
 
-    public static AuthorMapper getInstance(IAuthorRepository authorRepository) {
+    public static AuthorMapper getInstance() {
         if(instance == null) {
-            instance = new AuthorMapper(authorRepository);
+            instance = new AuthorMapper();
         }
         return instance;
     }
 
     public Author mapDtoToEntity(AuthorDto authorDto) {
-        model.Author author = authorRepository.getAuthorById(Long.parseLong(authorDto.getId()));
+        model.Author author = new Author();
         author.setFirstName(authorDto.getFirstName());
         author.setLastName(authorDto.getLastName());
         return author;

@@ -10,10 +10,14 @@ import java.util.List;
 public class BookDto {
 
     private String id;
+    private String category;
     private String isBorrowed;
     private String isbn;
     private String pages;
     private String author;
+    private String summary;
+    private String title;
+    private String releaseDate;
     private List<String> borrowDateList;
     private List<String> borrowerList;
 

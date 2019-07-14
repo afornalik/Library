@@ -1,0 +1,49 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<div>
+    <form method="get" action="IndexServlet">
+    <table class="table mt-5">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Author</th>
+            <th scope="col">Category</th>
+            <th scope="col">Release</th>
+            <th scope="col">Page</th>
+            <th scope="col">Borrower</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+
+       <c:forEach items="${requestScope.bookList}" var="book" varStatus="index" >
+       <tr>
+            <th scope="row">${index.index}</th>
+            <td>${book.title}</td>
+            <td>${book.isbn}</td>
+            <td>${book.author}</td>
+            <td>${book.category}</td>
+            <td>${book.releaseDate}</td>
+            <td>${book.pages}</td>
+            <td>${book.isBorrowed}</td>
+           <td>
+               <input type="radio" name="bookId" value="${book.id}" checked>
+               </td>
+        </tr>
+       </c:forEach>
+
+        </tbody>
+    </table>
+        <br>
+
+        <button type="submit" class="btn btn-primary" name="action">Add</button>
+        <button type="submit" class="btn btn-secondary" name="action">Edit</button>
+        <button type="submit" class="btn btn-success" name="action">Show</button>
+        <button type="submit" class="btn btn-danger" name="action">Delete</button>
+
+    </form>
+
+</div>
