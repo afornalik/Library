@@ -16,6 +16,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
+//@SuppressWarnings("JpaDataSourceORMInspection")
 public class Author {
 
     @Id
