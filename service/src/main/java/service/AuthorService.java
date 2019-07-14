@@ -21,7 +21,7 @@ public class AuthorService implements IAuthorService {
 
     private AuthorService(IAuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
-        authorMapper = AuthorMapper.getInstance(authorRepository);
+        authorMapper = AuthorMapper.getInstance();
     }
 
     public static AuthorService getInstance(IAuthorRepository authorRepository) {
@@ -42,7 +42,8 @@ public class AuthorService implements IAuthorService {
 
     public void saveAuthor(AuthorDto authorDto) {
 
-        Author authorEntity = authorMapper.mapDtoToEntity(authorDto);
+            Author authorEntity = new Author();
+            authorEntity = authorMapper.mapDtoToEntity(authorDto);
 
         try {
             authorRepository.save(authorEntity);
