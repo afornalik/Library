@@ -2,7 +2,7 @@
 
 
 <div>
-    <form method="get" action="IndexServlet">
+    <form method="get" action="SelectServlet">
     <table class="table mt-5">
         <thead class="thead-light">
         <tr>
@@ -21,7 +21,7 @@
 
        <c:forEach items="${requestScope.bookList}" var="book" varStatus="index" >
        <tr>
-            <th scope="row">${index.index}</th>
+            <th scope="row">${index.index+1}</th>
             <td>${book.title}</td>
             <td>${book.isbn}</td>
             <td>${book.author}</td>
@@ -39,10 +39,10 @@
     </table>
         <br>
 
-        <button type="submit" class="btn btn-primary" name="action">Add</button>
-        <button type="submit" class="btn btn-secondary" name="action">Edit</button>
-        <button type="submit" class="btn btn-success" name="action">Show</button>
-        <button type="submit" class="btn btn-danger" name="action">Delete</button>
+        <button type="submit" class="btn btn-primary" name="action" value="Add">Add</button>
+        <button type="submit" class="btn btn-secondary" name="action" value="Edit">Edit</button>
+        <button type="submit" class="btn btn-success" name="action" value="Show">Show</button>
+        <button type="submit" class="btn btn-danger" name="action" value="Delete">Delete</button>
 
     </form>
 

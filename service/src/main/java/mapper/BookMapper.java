@@ -5,6 +5,7 @@ import model.Book;
 import repository.BookRepository;
 
 import java.time.LocalDate;
+import java.util.stream.Collectors;
 
 public class BookMapper implements IMapper<Book, BookDto> {
 
@@ -23,7 +24,7 @@ public class BookMapper implements IMapper<Book, BookDto> {
 
     public Book mapDtoToEntity( BookDto bookDto) {
         Book book = new Book();
-        if(bookDto.getIsBorrowed().equals("0")) {
+        if(bookDto.getBorrower().equals("0")) {
             book.setBorrow(false);
         }else {
             book.setBorrow(true);
@@ -42,9 +43,14 @@ public class BookMapper implements IMapper<Book, BookDto> {
         bookDto.setId(String.valueOf(book.getIdBook()));
         bookDto.setCategory(book.getCategory());
         if(book.getBorrow()) {
-            bookDto.setIsBorrowed("borrowed");
+            bookDto.setBorrower(
+                    book.getBorrows()
+                            .stream()
+                            .map(x -> x.getBorrower().getFirstName()+" "+x.getBorrower().getLastName())
+                            .collect(Collectors.joining()));
+
         }else {
-            bookDto.setIsBorrowed(" - ");
+            bookDto.setBorrower(" - ");
         }
         bookDto.setIsbn(book.getIsbn());
         bookDto.setPages(book.getPages().toString());
