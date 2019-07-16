@@ -8,5 +8,5 @@ public interface IBookService {
 
     List<BookDto> getAllBooks();
 
-
+    void saveBook(BookDto bookDto);
 }

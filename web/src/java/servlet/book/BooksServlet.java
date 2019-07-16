@@ -1,4 +1,4 @@
-package servlet;
+package servlet.book;
 
 import dto.BookDto;
 import model.Book;

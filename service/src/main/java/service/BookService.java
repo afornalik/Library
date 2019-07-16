@@ -3,6 +3,7 @@ package service;
 import dto.BookDto;
 import mapper.BookMapper;
 import mapper.IMapper;
+import model.Book;
 import repository.BookRepository;
 import repository.IBookRepository;
 
@@ -35,5 +36,11 @@ public class BookService implements IBookService {
                 .stream()
                 .map(bookMapper::mapEntityToDto)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public void saveBook(BookDto bookDto) {
+        Book bookToSave = bookMapper.mapDtoToEntity(bookDto);
+        bookRepository.save(bookToSave);
     }
 }

@@ -16,35 +16,10 @@ public class SelectServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String selected = request.getParameter("action");
-        System.out.println(selected);
-        RequestDispatcher requestDispatcher;
+        String selected = request.getParameter("action")+"Servlet";
 
-        switch (selected) {
-            case "Add" : {
-                requestDispatcher = request.getRequestDispatcher("AddServlet");
-                requestDispatcher.forward(request,response);
-                break;
-            }
-            case "Edit" : {
-                requestDispatcher = request.getRequestDispatcher("EditServlet");
-                break;
-            }
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(selected);
+        requestDispatcher.forward(request,response);
 
-            case "Show" : {
-                requestDispatcher = request.getRequestDispatcher("ShowServlet");
-                break;
-            }
-
-            case "Delete" : {
-                requestDispatcher = request.getRequestDispatcher("servlet/control/DeleteServlet.java");
-                break;
-            }
-            default: {
-               // requestDispatcher = request.getRequestDispatcher("BooksServlet");
-            }
-
-
-        }
     }
 }

@@ -35,9 +35,13 @@ public class BookRepository implements IBookRepository {
     }
 
     public void save(Book book) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(book);
-        entityManager.getTransaction().commit();
+       try {
+           entityManager.getTransaction().begin();
+            entityManager.persist(book);
+            entityManager.getTransaction().commit();
+       }catch (Exception e) {
+            entityManager.getTransaction().rollback();
+       }
     }
 
     public void edit(Book book) {

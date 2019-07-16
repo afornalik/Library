@@ -12,7 +12,7 @@
             <th scope="col">Author</th>
             <th scope="col">Category</th>
             <th scope="col">Release</th>
-            <th scope="col">Page</th>
+            <th scope="col">Pages</th>
             <th scope="col">Borrower</th>
             <th scope="col"></th>
         </tr>
@@ -28,7 +28,7 @@
             <td>${book.category}</td>
             <td>${book.releaseDate}</td>
             <td>${book.pages}</td>
-            <td>${book.isBorrowed}</td>
+            <td>${book.borrower}</td>
            <td>
                <input type="radio" name="bookId" value="${book.id}" checked>
                </td>
