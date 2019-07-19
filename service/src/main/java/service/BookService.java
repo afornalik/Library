@@ -39,8 +39,18 @@ public class BookService implements IBookService {
     }
 
     @Override
+    public BookDto getBook(Long id) {
+        return bookMapper.mapEntityToDto(bookRepository.getBookById(id));
+    }
+
+    @Override
     public void saveBook(BookDto bookDto) {
         Book bookToSave = bookMapper.mapDtoToEntity(bookDto);
         bookRepository.save(bookToSave);
+    }
+
+    @Override
+    public void deleteBook(Long id) {
+        bookRepository.delete(bookRepository.getBookById(id));
     }
 }

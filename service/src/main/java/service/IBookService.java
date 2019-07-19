@@ -8,5 +8,9 @@ public interface IBookService {
 
     List<BookDto> getAllBooks();
 
+    BookDto getBook(Long id);
+
     void saveBook(BookDto bookDto);
+
+    void deleteBook(Long id);
 }
