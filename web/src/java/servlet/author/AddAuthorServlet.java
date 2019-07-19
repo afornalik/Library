@@ -1,4 +1,4 @@
-package servlet;
+package servlet.author;
 
 import dto.AuthorDto;
 import repository.AuthorRepository;
@@ -33,7 +33,7 @@ public class AddAuthorServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        authorService = AuthorService.getInstance(authorRepository);
+        authorService = AuthorService.getInstance();
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("addAuthorForm.jsp");
         requestDispatcher.forward(request,response);

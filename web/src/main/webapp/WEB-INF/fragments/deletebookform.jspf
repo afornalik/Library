@@ -1,0 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="container col-9 mt-3 text-center ">
+    <form action="/BookDeleteServlet" method="post">
+       <h3 class="mt-4">Are you sure to delete book</h3>
+        <h2 class="mt-4">${bookDescription.author} ${bookDescription.title}</h2>
+        <input type="hidden" name="bookId" value="${bookDescription.id}">
+        <button type="submit" class="btn btn-danger" name="addAction" value="delete">Delete</button>
+        <button type="submit" class="btn btn-primary" name="addAction" value="cancel">Cancel</button>
+    </form>
+</div>

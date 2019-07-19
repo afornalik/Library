@@ -1,5 +1,8 @@
 package servlet;
 
+import service.BookService;
+import service.IBookService;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,41 +13,24 @@ import java.io.IOException;
 
 @WebServlet("/SelectServlet")
 public class SelectServlet extends HttpServlet {
+
+    private final IBookService bookService = BookService.getInstance();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String selected = request.getParameter("action");
-        System.out.println(selected);
-        RequestDispatcher requestDispatcher;
+        String selected = request.getParameter("action")+"Servlet";
 
-        switch (selected) {
-            case "Add" : {
-                requestDispatcher = request.getRequestDispatcher("AddServlet");
-                requestDispatcher.forward(request,response);
-                break;
-            }
-            case "Edit" : {
-                requestDispatcher = request.getRequestDispatcher("EditServlet");
-                break;
-            }
+        request.setAttribute(
+                "selectedBook",bookService.getBook(
+                        Long.parseLong(
+                                request.getParameter("bookId"))));
 
-            case "Show" : {
-                requestDispatcher = request.getRequestDispatcher("ShowServlet");
-                break;
-            }
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(selected);
+        requestDispatcher.forward(request,response);
 
-            case "Delete" : {
-                requestDispatcher = request.getRequestDispatcher("servlet/control/DeleteServlet.java");
-                break;
-            }
-            default: {
-               // requestDispatcher = request.getRequestDispatcher("BooksServlet");
-            }
-
-
-        }
     }
 }

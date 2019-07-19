@@ -1,31 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Library | Home</title>
+    <title>Library | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<style>
-    html {
-        position: relative;
-        min-height: 100%;
-    }
-    body {
-        margin-bottom: 60px; /* Margin bottom by footer height */
-    }
-    .footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 60px; /* Set the fixed height of the footer here */
-        line-height: 60px; /* Vertically center the text there */
-        background-color: #f5f5f5;
-    }
-</style>
+    <link rel="stylesheet" href="WEB-INF/styles/style.css" />
 </head>
 <body>
 <%@ include file="/WEB-INF/fragments/header.jspf"%>
 
 <div  class="container col-9">
-    <jsp:include page="WEB-INF/fragments/booklistform.jspf"   />
+    <jsp:include page="WEB-INF/fragments/loginform.jspf"   />
 </div>
 
 <%@ include file="/WEB-INF/fragments/footer.jspf"%>

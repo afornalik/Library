@@ -16,17 +16,17 @@ public class AuthorService implements IAuthorService {
     private final IAuthorRepository authorRepository;
     private final AuthorMapper authorMapper;
 
-    private static AuthorService instance;
+    private static IAuthorService instance = null;
 
 
-    private AuthorService(IAuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+    private AuthorService() {
+        this.authorRepository = AuthorRepository.getInstance();
         authorMapper = AuthorMapper.getInstance();
     }
 
-    public static AuthorService getInstance(IAuthorRepository authorRepository) {
+    public static IAuthorService getInstance( ) {
         if(instance == null) {
-            instance = new AuthorService(authorRepository);
+            instance = new AuthorService();
         }
         return instance;
     }

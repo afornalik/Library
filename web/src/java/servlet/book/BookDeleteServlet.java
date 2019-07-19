@@ -1,9 +1,7 @@
-package servlet;
+package servlet.book;
 
-import dto.BookDto;
-import model.Book;
-import repository.BookRepository;
 import service.BookService;
+import service.IBookService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,22 +10,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(urlPatterns = "/index")
-public class BooksServlet extends HttpServlet {
+@WebServlet("/BookDeleteServlet")
+public class BookDeleteServlet extends HttpServlet {
 
-    private BookService bookService = BookService.getInstance();
+    private final IBookService bookService = BookService.getInstance();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String selection = request.getParameter("addAction");
+
+
+
+        if (selection.equals("delete")) {
+            bookService.deleteBook(Long.parseLong(request.getParameter("bookId")));
+        }
+
+        response.sendRedirect("/index");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       List<BookDto> bookDtos = bookService.getAllBooks();
 
-      request.setAttribute("bookList",bookDtos);
-
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
-        requestDispatcher.forward(request,response);
     }
 }

@@ -2,7 +2,10 @@ package mapper;
 
 import dto.BookDto;
 import model.Book;
+import repository.AuthorRepository;
 import repository.BookRepository;
+import repository.IAuthorRepository;
+import repository.IBookRepository;
 
 import java.time.LocalDate;
 import java.util.stream.Collectors;
@@ -10,6 +13,7 @@ import java.util.stream.Collectors;
 public class BookMapper implements IMapper<Book, BookDto> {
 
     private static BookMapper instance;
+   private final IAuthorRepository authorRepository = AuthorRepository.getInstance();
 
     private BookMapper( ) {
 
@@ -35,6 +39,7 @@ public class BookMapper implements IMapper<Book, BookDto> {
         book.setReleaseDate(LocalDate.now());
         book.setSummary(bookDto.getSummary());
         book.setTitle(bookDto.getTitle());
+        book.setAuthor(authorRepository.getAuthorById(Long.parseLong(bookDto.getAuthor())));
         return book;
     }
 
