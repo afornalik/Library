@@ -39,7 +39,7 @@ public class Book {
     @Column(length=350)
     private String summary;
 
-    @Column(nullable=false, length=255)
+    @Column(nullable=false)
     private String title;
 
     @ManyToOne

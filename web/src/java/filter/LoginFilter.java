@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/index", "/servlet/control/*","/SelectServlet","/servlet/book/*"})
+@WebFilter(urlPatterns = {"/servlet/control/*","/SelectServlet","/servlet/book/*","/index.jsp"})
 public class LoginFilter implements Filter {
     public void destroy() {
     }
@@ -18,7 +18,7 @@ public class LoginFilter implements Filter {
 
         HttpSession session = httpServletRequest.getSession(false);
 
-        if(session == null) {
+        if(session == null || session.getAttribute("login")==null) {
             httpServletResponse.sendRedirect("/login.jsp");
 
         }else {

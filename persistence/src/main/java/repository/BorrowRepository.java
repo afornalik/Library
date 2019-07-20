@@ -9,14 +9,20 @@ import java.util.List;
 public class BorrowRepository implements IBorrowRepository {
 
 
-
+    private static BorrowRepository instance = null;
 
     private final EntityManager entityManager;
 
-    public BorrowRepository() {
+    private BorrowRepository() {
         entityManager = EntityManagerUtils.getInstance().getEntityManager();
     }
 
+    public static BorrowRepository getInstance() {
+        if(instance == null) {
+            instance = new BorrowRepository();
+        }
+        return instance;
+    }
 
     public List<Borrow> getAllBorrows() {
         String query = "SELECT a FROM Borrow a";

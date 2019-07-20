@@ -20,7 +20,7 @@ public class BookAddServlet extends HttpServlet {
     ;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().println("książka dodana");
+
 
         String select = request.getParameter("addAction");
 

@@ -17,7 +17,7 @@ public class SelectServlet extends HttpServlet {
     private final IBookService bookService = BookService.getInstance();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+       response.encodeRedirectURL("/login.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

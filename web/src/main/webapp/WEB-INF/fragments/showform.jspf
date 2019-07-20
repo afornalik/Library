@@ -1,0 +1,90 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<div class="card bg-light text-dark mt-3">
+    <div class="card-body">
+        <div class="col-6">
+  <div class="row">
+      <div class="col-3">
+        <p>Title</p>
+      </div>
+        <div class="col-9">
+            <p>${requestScope.selectedBook.title}</p>
+        </div>
+  </div>
+
+
+        <div class="row">
+            <div class="col-3">
+                <p>ISBN</p>
+
+            </div>
+            <div class="col-9">
+                <p>${requestScope.selectedBook.isbn}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <p>Category</p>
+
+            </div>
+            <div class="col-9">
+                <p>${requestScope.selectedBook.category}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <p>pages</p>
+
+            </div>
+            <div class="col-9">
+                <p>${requestScope.selectedBook.pages}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <p>Release Date </p>
+
+            </div>
+            <div class="col-9">
+                <p>${requestScope.selectedBook.releaseDate}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <p>Author </p>
+
+            </div>
+            <div class="col-9">
+                <p>${requestScope.selectedBook.author}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <p>Summary</p>
+
+            </div>
+            <div class="col-9">
+                <p>${requestScope.selectedBook.summary}</p>
+            </div>
+        </div>
+        </div>
+        <form action="/ShowServlet" method="post">
+            <input type="hidden" value="${requestScope.selectedBook.id}" name="book">
+        <c:if test="${requestScope.selectedBook.borrower == ' - '}">
+           <div class="text-center">
+               <input class="btn btn-primary" type="submit" name="borrow" value="Borrow" title="Borrow">
+           </div>
+        </c:if>
+
+        <c:if test="${requestScope.selectedBook.borrower != ' - '}">
+           <div class="text-center">
+               <input class="btn btn-primary" type="submit" name="borrow" value="Give back" title="Give back>
+           </div>
+        </c:if>
+        </form>
+    </div>
+</div>
