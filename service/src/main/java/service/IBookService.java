@@ -13,4 +13,6 @@ public interface IBookService {
     void saveBook(BookDto bookDto);
 
     void deleteBook(Long id);
+
+    void updateBook(BookDto bookDto);
 }

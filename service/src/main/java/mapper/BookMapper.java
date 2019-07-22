@@ -2,12 +2,14 @@ package mapper;
 
 import dto.BookDto;
 import model.Book;
+import model.Borrow;
 import repository.AuthorRepository;
 import repository.BookRepository;
 import repository.IAuthorRepository;
 import repository.IBookRepository;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class BookMapper implements IMapper<Book, BookDto> {
@@ -28,6 +30,9 @@ public class BookMapper implements IMapper<Book, BookDto> {
 
     public Book mapDtoToEntity( BookDto bookDto) {
         Book book = new Book();
+        if(bookDto.getId() != null) {
+            book.setIdBook(Long.parseLong(bookDto.getId()));
+        }
         if(bookDto.getBorrower().equals("0")) {
             book.setBorrow(false);
         }else {
@@ -48,11 +53,15 @@ public class BookMapper implements IMapper<Book, BookDto> {
         bookDto.setId(String.valueOf(book.getIdBook()));
         bookDto.setCategory(book.getCategory());
         if(book.getBorrow()) {
-            bookDto.setBorrower(
-                    book.getBorrows()
-                            .stream()
-                            .map(x -> x.getBorrower().getFirstName()+" "+x.getBorrower().getLastName())
-                            .collect(Collectors.joining()));
+            String borrower = book.getBorrows()
+                    .stream()
+                    .max(Comparator.comparing(Borrow::getIdBorrow))
+                    .map(Borrow::getBorrower)
+                    .get()
+                    .getFirstName();
+
+            bookDto.setBorrower(borrower);
+
 
         }else {
             bookDto.setBorrower(" - ");

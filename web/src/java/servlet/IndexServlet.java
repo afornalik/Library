@@ -29,7 +29,9 @@ public class IndexServlet extends HttpServlet {
             session.setAttribute("login",login);
         }else {
             HttpSession session =request.getSession();
-            session.invalidate();
+            request.setAttribute("error","Enter valid login and password");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+            requestDispatcher.forward(request,response);
         }
 
         response.sendRedirect("/index");

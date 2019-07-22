@@ -29,4 +29,8 @@ public class Borrower {
     @OneToOne
     @JoinColumn(name="borrower_details_id",referencedColumnName = "id_borrower_details")
     private BorrowerDetails borrowerDetails;
+
+    public String getDisplayName() {
+
+    }
 }
